@@ -1,6 +1,7 @@
+import asyncio
 from fastapi import FastAPI
 import sys
-from database.config import settings
+from databases.database import CreateDropUtils
 
 app = FastAPI()
 
