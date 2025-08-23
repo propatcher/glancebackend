@@ -69,4 +69,3 @@ class FavouriteOrm(Base):
     user: Mapped["UserOrm"] = relationship(back_populates="favourites")
     product: Mapped["ProductOrm"] = relationship(back_populates="favourites")
     
-metadata_obj = MetaData()
