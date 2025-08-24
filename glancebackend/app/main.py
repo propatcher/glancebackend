@@ -47,7 +47,7 @@ async def add_product(product_data: ProductAddDTO,session: SessionDep):
         await session.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error creating product"
+            detail="Error creating product"
         )
 @app.get("/get_products", tags=["Товары"],summary="Получить все товары")
 async def get_products(session: SessionDep):
@@ -57,7 +57,7 @@ async def get_products(session: SessionDep):
     if not products:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Products not found"
+            detail="Products not found"
         )
     return products
 
@@ -117,5 +117,5 @@ async def update_product(product_id: int,product_data: ProductAddDTO,session: Se
         await session.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error updating product"
+            detail="Error updating products"
         )
