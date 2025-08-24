@@ -1,9 +1,10 @@
 import asyncio
 from typing import Annotated
+from fastapi import Depends
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
 from config import settings
-from models import Base
+from .models import Base
 
 async_engine = create_async_engine(
     url=settings.DATABASE_URL_asyncpg,
@@ -11,6 +12,7 @@ async_engine = create_async_engine(
 )
 
 async_session_factory = async_sessionmaker(async_engine)
+
 
 class CreateDropUtils:
     @staticmethod
@@ -23,4 +25,3 @@ class CreateDropUtils:
         async with async_engine.begin() as connection:
             await connection.run_sync(Base.metadata.drop_all)
             
-asyncio.run(CreateDropUtils.create_tables())

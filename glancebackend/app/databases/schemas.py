@@ -9,6 +9,7 @@ class ProductBaseDTO(BaseModel):
     price: int = Field(..., ge=0, description="Цена товара")
     media_id: Optional[int] = Field(None, description="ID медиафайла")
 
+
 class UserBaseDTO(BaseModel):
     login: str = Field(..., min_length=3, max_length=50, description="Логин пользователя")
 
